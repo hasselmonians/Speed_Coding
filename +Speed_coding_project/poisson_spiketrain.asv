@@ -1,0 +1,11 @@
+%% Generation of Poisson spike train with refractoriness (from "Fundamentals of Computational Neuroscience", Second edition, by Thomas Trappenberg, Table 3.3)
+
+clear
+clf
+
+fr_mean = 15/1000; % mean firing rate
+
+%% generating poisson spike train
+lambda = 1/fr_mean; % inverse firing rate
+ns = 1000; % number of spikes to be generated
+isi1 = -lambda.*log(rand(ns,1)); % generation of expo
