@@ -42,12 +42,15 @@ end
 
 finalFR = [FR, ones(length(speed),1)];
 
-f = finalFR \ speed;
+[r,c] = size(finalFR);
+half = floor(r/2);
 
-predictedSpeed = finalFR * f;
+f = finalFR(1:half,:) \ speed(1:half,:);
+
+predictedSpeed = finalFR(half+1:end,:) * f;
 
 figure()
-plot(speed, 'b')
+plot(speed(half+1:end,:), 'b')
 hold on
 plot(predictedSpeed, 'r')
 legend('Actual Speed', 'Predicted Speed')
